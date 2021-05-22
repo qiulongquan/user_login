@@ -14,3 +14,25 @@
     $ python manage.py runserver 0.0.0.0:8000
     3.打开后台管理页面
     http://127.0.0.1:8000/admin/
+
+
+安装captcha（图形验证码）包的方法
+https://www.cnblogs.com/derek1184405959/p/8567522.html
+1.pip install django-simple-captcha
+2.注册captcha
+    在settings中，将‘captcha’注册到app列表里
+3.captcha需要在数据库中建立自己的数据表，所以需要执行migrate命令生成数据表
+    python manage.py migrate
+4.添加url路由
+    根目录下的urls.py文件中增加captcha对应的网址
+    path('captcha', include('captcha.urls'))  # 增加这一行
+5.修改forms.py
+    如果上面都OK了，就可以直接在我们的forms.py文件中添加CaptchaField了
+    captcha = CaptchaField(label='验证码')
+6.修改login.html
+    由于我们前面是手动生成的form表单，所以还要修改一下，添加captcha的相关内容
+    <div class="form-group">
+                  {{ login_form.captcha.errors }}
+                  {{ login_form.captcha.label_tag }}
+                  {{ login_form.captcha }}
+    </div>
