@@ -1,0 +1,16 @@
+系统搭建方法简述
+1.首先搭建django环境（最好使用docker-compose搭建django环境）
+2.进入到django的命令行模式，然后移动到manage.py文件所在地，执行数据库迁移命令（现在默认使用的是sqlite3数据库）
+    python manage.py migrate
+3.在django的设定文件settings.py的 ALLOWED_HOSTS = ['XXX.XXX.XXX.XXX']设定主机ip地址
+4.在django容器内启动django程序
+    python manage.py runserver 0.0.0.0:8000
+5.打开浏览器http://3.230.166.215:8000/login 查看是否正常显示页面
+6.后台的管理员登录 需要首先创建超级管理员用户
+    1.创建一个管理员账号
+    python manage.py createsuperuser
+    输入用户名 密码 就可以创建成功
+    2.然后启动django程序
+    $ python manage.py runserver 0.0.0.0:8000
+    3.打开后台管理页面
+    http://127.0.0.1:8000/admin/

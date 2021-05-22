@@ -1,0 +1,10 @@
+body{
+    background: lightblue;
+}
+
+.my-con1{
+    text-align: right;
+    color: rgb(8, 8, 8);
+    margin-top: 10px;
+    margin-right: 20px;
+}

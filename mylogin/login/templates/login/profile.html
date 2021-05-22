@@ -1,0 +1,44 @@
+{% extends 'login/base.html' %}
+{% load static %}
+{% block title %}<title>FX数据预测</title>{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'login/CSS/profile.css' %}">
+{% endblock %}
+{% block content %}
+<div>
+    <div class="top">
+        <img src="{% static 'login/image/fx.ico' %}" width="25" height="25" /><span>FX汇率预测</span>
+    </div>
+    <h1 class="my-con3">用户信息</h1>
+    <div class="form-group my-con4">
+        <table align="center" border="0">
+            <tbody>
+                <tr>
+                <td>用户名：</td>
+                <td>{{user.username}}</td>
+                </tr>
+                <tr>
+                <td>Email：</td>
+                <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                <td>公司名：</td>
+                <td>{{userprofile.org}}</td>
+                </tr>
+                <tr>
+                <td>联系方式：</td>
+                <td>{{userprofile.telephone}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="my-con2">
+        <button onclick='location.href="{% url 'login:profile_update' user.id %}"' class="btn btn-default">修改信息</button>
+        <button onclick='location.href="{% url 'login:pwd_change' user.id %}"' class="btn btn-default">修改密码</button>
+        <button onclick='location.href="{% url 'show_predict_data:index' %}"' class="btn btn-default">返回</button>
+    </div>
+    <div class="footer">
+            <p>FX汇率预测 &copy; 2021-04</p>
+    </div>
+</div>
+{% endblock content %}
